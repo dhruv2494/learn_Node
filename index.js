@@ -31,10 +31,10 @@ app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   res.render("Home");
 });
-app.get("/test", (req, res) => {
+app.get("/test", async (req, res) => {
   // res.render("Home");
   try {
-    mongoose
+    await mongoose
       .connect(
         "mongodb+srv://oxfordamreli3:Dhruv123@cluster0.wiihqma.mongodb.net/node_learn"
       )
