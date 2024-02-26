@@ -63,29 +63,30 @@ const registerUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  try {
-    const result = validationResult(req);
-    if (!result.isEmpty()) {
-      res.status(403).send({ errors: result.array() });
-    } else {
-      let a = await user.find({ email: req.body.email });
-      if (a[0] !== undefined) {
-        if (a[0].password === req.body.password) {
-          const token = jwt.sign(
-            { userId: a[0]._id },
-            process.env.JWT_SECRET_KEY
-          );
-          res.send({ token: token });
-        } else {
-          res.send("Invalid Password");
-        }
-      } else {
-        res.send("User Not Found");
-      }
-    }
-  } catch (e) {
-    res.status(500).send(e);
-  }
+  // try {
+  //   const result = validationResult(req);
+  //   if (!result.isEmpty()) {
+  //     res.status(403).send({ errors: result.array() });
+  //   } else {
+  //     let a = await user.find({ email: req.body.email });
+  //     if (a[0] !== undefined) {
+  //       if (a[0].password === req.body.password) {
+  //         const token = jwt.sign(
+  //           { userId: a[0]._id },
+  //           process.env.JWT_SECRET_KEY
+  //         );
+  //         res.send({ token: token });
+  //       } else {
+  //         res.send("Invalid Password");
+  //       }
+  //     } else {
+  //       res.send("User Not Found");
+  //     }
+  //   }
+  // } catch (e) {
+  //   res.status(500).send(e);
+  // }
+  res.send({ ...req.body });
 };
 
 const verifyUser = async (req, res) => {
