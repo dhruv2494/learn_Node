@@ -34,19 +34,20 @@ app.get("/", (req, res) => {
 app.get("/test", async (req, res) => {
   // res.render("Home");
   try {
-    await mongoose
-      .connect(
-        "mongodb+srv://oxfordamreli3:Dhruv123@cluster0.wiihqma.mongodb.net/node_learn"
-      )
-      .then(() => {
-        res.send("Connected");
-      })
-      .catch((e) => {
-        // console.log(e);
-        res.send({
-          error: e,
-        });
-      });
+    // await mongoose
+    //   .connect(
+    //     "mongodb+srv://oxfordamreli3:Dhruv123@cluster0.wiihqma.mongodb.net/node_learn"
+    //   )
+    //   .then(() => {
+    //     res.send("Connected");
+    //   })
+    //   .catch((e) => {
+    //     // console.log(e);
+    //     res.send({
+    //       error: e,
+    //     });
+    //   });
+    res.send("hello");
   } catch (e) {
     console.log(e);
     res.send({
