@@ -23,6 +23,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./docs/swagger");
 const authRoute = require("./src/routes/authRoutes");
 const verifyToken = require("./src/middlewares/authentication");
+const { log } = require("console");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -32,19 +33,26 @@ app.get("/", (req, res) => {
 });
 app.get("/test", (req, res) => {
   // res.render("Home");
-  mongoose
-    .connect(
-      "mongodb+srv://oxfordamreli3:Dhruv123@cluster0.wiihqma.mongodb.net/node_learn"
-    )
-    .then(() => {
-      res.send("Connected");
-    })
-    .catch((e) => {
-      // console.log(e);
-      res.send({
-        error: e,
+  try {
+    mongoose
+      .connect(
+        "mongodb+srv://oxfordamreli3:Dhruv123@cluster0.wiihqma.mongodb.net/node_learn"
+      )
+      .then(() => {
+        res.send("Connected");
+      })
+      .catch((e) => {
+        // console.log(e);
+        res.send({
+          error: e,
+        });
       });
+  } catch (e) {
+    console.log(e);
+    res.send({
+      error: e,
     });
+  }
 });
 
 app.use(
