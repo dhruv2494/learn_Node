@@ -12,10 +12,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => console.log("Connected!"))
-  .catch((e) => console.log(e));
+// mongoose
+//   .connect(process.env.MONGO_URL)
+//   .then(() => console.log("Connected!"))
+//   .catch((e) => console.log(e));
 
 const userRoute = require("./src/routes/userRoutes");
 
@@ -29,6 +29,20 @@ app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   res.render("Home");
+});
+app.get("/test", (req, res) => {
+  // res.render("Home");
+  mongoose
+    .connect(process.env.MONGO_URL)
+    .then(() => {
+      res.send("Connected");
+    })
+    .catch((e) => {
+      console.log(e);
+      res.send({
+        error: e,
+      });
+    });
 });
 
 app.use(
