@@ -40,7 +40,7 @@ app.get("/test", (req, res) => {
       res.send("Connected");
     })
     .catch((e) => {
-      console.log(e);
+      // console.log(e);
       res.send({
         error: e,
       });
