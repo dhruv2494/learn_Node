@@ -42,6 +42,15 @@ app.use(
   })
 );
 
+app.get("/data", async (req, res) => {
+  try {
+    let a = await user.find();
+    res.status(200).json({ data: a });
+  } catch (e) {
+    res.status(500).json({ data: e });
+  }
+});
+
 app.use("/auth", authRoute);
 app.use("/user", verifyToken, userRoute);
 
