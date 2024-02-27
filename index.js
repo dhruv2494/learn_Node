@@ -1,5 +1,5 @@
 const express = require("express");
-const port = 2000;
+// const port = 2000;
 const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -55,6 +55,8 @@ app.get("/data", async (req, res) => {
 app.use("/auth", authRoute);
 app.use("/user", verifyToken, userRoute);
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
