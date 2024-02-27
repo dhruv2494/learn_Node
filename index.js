@@ -24,6 +24,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./docs/swagger");
 const authRoute = require("./src/routes/authRoutes");
 const verifyToken = require("./src/middlewares/authentication");
+const user = require("./src/models/user");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
