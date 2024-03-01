@@ -40,8 +40,13 @@ app.use(
   })
 );
 
+app.get("/test", (req, res) => {
+  res.send({ data: process.env });
+});
+
 app.use("/auth", authRoute);
 app.use("/user", verifyToken, userRoute);
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
