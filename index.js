@@ -38,6 +38,9 @@ app.use(
     },
   })
 );
+app.get('/env', (req, res) => {
+  res.status(200).json(process.env);
+});
 
 app.use("/auth", authRoute);
 app.use("/user", verifyToken, userRoute);
